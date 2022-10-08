@@ -19,7 +19,7 @@ $Amount  = 1000; // amount to pay
 $CallbackUrl='http://example.ir/callback' ; // set callback url
 $additionalData='' ; // set Additional Data max 500 character
 $originator='' ; // set Originator max 50 character
-$isLog=true//is log request and result
+$isLog=true; //is log request and result
 $salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$additionalData,$originator,$isLog);
 if($parsianIPG->isReadyRedirect($salePaymentResult)){
     $parsianIPG->redirect($salePaymentResult);// redirect to parsian bank gateway  for payment  
