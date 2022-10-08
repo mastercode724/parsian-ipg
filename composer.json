@@ -1,0 +1,28 @@
+{
+  "name": "mastercode724/parsian-ipg",
+  "description": "Iranian parsian bank payment gateways handler for laravel based applications",
+  "keywords": [
+    "parsian payment",
+    "parsian bank",
+    "online payment",
+    "parsian gateway"
+  ],
+  "type": "library",
+  "version": "1.1.0",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Mastercode724\\ParsianIPG\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.0",
+    "econea/nusoap": "^0.9.11",
+    "monolog/monolog": "^1.25"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5.6"
+  }
+}
