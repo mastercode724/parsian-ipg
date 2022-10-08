@@ -36,7 +36,9 @@ use Mastercode724\ParsianIPG\ParsianIPG;
 use Mastercode724\ParsianIPG\Entities\ConfirmPaymentResult;
   
 $parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
-$confirmPaymentResult = $parsianIPG->confirmPayment(true);
+$isLog=true; //is log request and result
+$addressLogger="";//is log file address request and result
+$confirmPaymentResult = $parsianIPG->confirmPayment($isLog,$addressLogger);
 if($parsianIPG->isReadyConfirm($confirmPaymentResult)){
     die(' Payment OK '); 
 }else{
@@ -58,7 +60,9 @@ use Mastercode724\ParsianIPG\ParsianIPG;
 use Mastercode724\ParsianIPG\Entities\ReversalResult;
 
 $parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
-$reversalResult = $parsianIPG->reversal(12545485,true);//reverse token payment
+$isLog=true; //is log request and result
+$addressLogger="";//is log file address request and result
+$reversalResult = $parsianIPG->reversal(12545485,$isLog,$addressLogger);//reverse token payment
 if($parsianIPG->isReadyReversal($reversalResult)){
     die(' Reverse Payment OK '); 
 }else{
