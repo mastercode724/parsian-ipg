@@ -20,7 +20,8 @@ $CallbackUrl='http://example.ir/callback' ; // set callback url
 $additionalData='' ; // set Additional Data max 500 character
 $originator='' ; // set Originator max 50 character
 $isLog=true; //is log request and result
-$salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$additionalData,$originator,$isLog);
+$addressLogger="";//is log file address request and result
+$salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$additionalData,$originator,$isLog,$addressLogger);
 if($parsianIPG->isReadyRedirect($salePaymentResult)){
     $parsianIPG->redirect($salePaymentResult);// redirect to parsian bank gateway  for payment  
 }
