@@ -151,13 +151,15 @@ use Mastercode724\ParsianIPG\Entities\ReversalResult;
 
 $parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
 
+$token=توکن پرداخت موفق;//Token of pay request  
+
 $isLog = فلگ تعیین وضعیت لاگ  ; //is log request and result
 در صورتی که این فلگ مقدار true داشته باشد . اطلاعات درخواست و خروجی فرخوانی در فایل لاگ ثبت می شود
 $addressLogger= آدرس   فایل لاگ ;//is log file address request and result
 در صورتی که شما آدرس فایل لاگ را مقداردهی نکنید فایل لاگ در مسیر کد پکیج در پوشه logs قرار داده می شود
 
  # فراخوانی تابع reversal برای برگشت وجه پرداخت از درگاه     
-$reversalResult = $parsianIPG->reversal(12545485,$isLog,$addressLogger);//reverse token payment
+$reversalResult = $parsianIPG->reversal($token,$isLog,$addressLogger);//reverse token payment
 # چک کردن نتیجه فراخوانی    
 در صورتی که خروجی در وضعیت موفق باشد تابع isReadyReversal نتیجه درستی true را برمی گرداند در غیر اینصورت نتیجه false را بر می گرداند
 
