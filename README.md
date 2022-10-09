@@ -1,6 +1,11 @@
 # parsianPay
 Easily integrate PHP application with parsian bank payment.
 
+
+# <a href="https://github.com/mastercode724/parsian-ipg/wiki/%D8%AF%D8%B1%DA%AF%D8%A7%D9%87-%D9%BE%D8%A7%D8%B1%D8%B3%DB%8C%D8%A7%D9%86" >
+راهنمای نصب و راه اندازی
+</a>
+
 # Installation
 ``` bash
 $ composer require mastercode724/parsian-ipg
@@ -76,9 +81,7 @@ if($parsianIPG->isReadyReversal($reversalResult)){
 
 ```
 
-<a href="https://github.com/mastercode724/parsian-ipg/wiki/%D8%AF%D8%B1%DA%AF%D8%A7%D9%87-%D9%BE%D8%A7%D8%B1%D8%B3%DB%8C%D8%A7%D9%86" >
-راهنمای نصب و راه اندازی
-</a>
+
 
 
 
