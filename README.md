@@ -100,10 +100,74 @@ $salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$addit
 
 if($parsianIPG->isReadyToRedirect($salePaymentResult)){
 # انتقال به صفحه پرداخت    
-
     $parsianIPG->redirect($salePaymentResult);// redirect to parsian bank gateway  for payment  
 }
 
 
  
+```
+
+
+
+جهت صفحه بازگشت از پرداخت درگاه #
+``` bash
+use Mastercode724\ParsianIPG\ParsianIPG;
+use Mastercode724\ParsianIPG\Entities\ConfirmPaymentResult;  
+  
+# ایجاد کلاس درگاه . ورودی سازنده کلاس . Loginaccount درگاه می باشد
+$parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
+
+$isLog = فلگ تعیین وضعیت لاگ  ; //is log request and result
+در صورتی که این فلگ مقدار true داشته باشد . اطلاعات درخواست و خروجی فرخوانی در فایل لاگ ثبت می شود
+$addressLogger= آدرس   فایل لاگ ;//is log file address request and result
+در صورتی که شما آدرس فایل لاگ را مقداردهی نکنید فایل لاگ در مسیر کد پکیج در پوشه logs قرار داده می شود
+
+ # فراخوانی تابع confirmPayment برای تائید درخواست پرداخت از درگاه     
+
+$confirmPaymentResult = $parsianIPG->confirmPayment($isLog,$addressLogger);
+# چک کردن نتیجه فراخوانی    
+در صورتی که خروجی در وضعیت موفق باشد تابع isReadyConfirm  نتیجه درستی true را برمی گرداند در غیر اینصورت نتیجه false را بر می گرداند
+if($parsianIPG->isReadyConfirm($confirmPaymentResult)){
+    die(' Payment OK '); 
+}else{
+    if($confirmPaymentResult instanceof ConfirmPaymentResult){ 
+        echo $confirmPaymentResult->getMessage();
+    }
+} 
+
+
+
+
+
+```
+
+
+درخواست برگشت وجه توسط درگاه پرداخت اینترنتی پارسیان   #
+``` bash
+use Mastercode724\ParsianIPG\ParsianIPG;
+use Mastercode724\ParsianIPG\Entities\ReversalResult;
+# ایجاد کلاس درگاه . ورودی سازنده کلاس . Loginaccount درگاه می باشد
+
+$parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
+
+$isLog = فلگ تعیین وضعیت لاگ  ; //is log request and result
+در صورتی که این فلگ مقدار true داشته باشد . اطلاعات درخواست و خروجی فرخوانی در فایل لاگ ثبت می شود
+$addressLogger= آدرس   فایل لاگ ;//is log file address request and result
+در صورتی که شما آدرس فایل لاگ را مقداردهی نکنید فایل لاگ در مسیر کد پکیج در پوشه logs قرار داده می شود
+
+ # فراخوانی تابع reversal برای برگشت وجه پرداخت از درگاه     
+$reversalResult = $parsianIPG->reversal(12545485,$isLog,$addressLogger);//reverse token payment
+# چک کردن نتیجه فراخوانی    
+در صورتی که خروجی در وضعیت موفق باشد تابع isReadyReversal نتیجه درستی true را برمی گرداند در غیر اینصورت نتیجه false را بر می گرداند
+
+if($parsianIPG->isReadyReversal($reversalResult)){
+    die(' Reverse Payment OK '); 
+}else{
+    if($reversalResult instanceof ReversalResult){ 
+        echo $reversalResult->getMessage();
+    }
+}
+
+
+
 ```
