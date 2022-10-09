@@ -22,7 +22,7 @@ $originator='' ; // set Originator max 50 character
 $isLog=true; //is log request and result
 $addressLogger="";//is log file address request and result
 $salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$additionalData,$originator,$isLog,$addressLogger);
-if($parsianIPG->isReadyRedirect($salePaymentResult)){
+if($parsianIPG->isReadyToRedirect($salePaymentResult)){
     $parsianIPG->redirect($salePaymentResult);// redirect to parsian bank gateway  for payment  
 }
 
@@ -73,4 +73,37 @@ if($parsianIPG->isReadyReversal($reversalResult)){
 
 
 
+```
+
+جهت صدا زدن درگاه پرداخت #
+``` bash
+use Mastercode724\ParsianIPG\ParsianIPG;
+use Mastercode724\ParsianIPG\Entities\SalePaymentResult;
+
+# ایجاد کلاس درگاه . ورودی سازنده کلاس . Loginaccount درگاه می باشد
+$parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin
+# ورودی ها
+$OrderId = آی دی یکتای پرداخت; // factor number
+$Amount  = مبلغ پرداختی ; // amount to pay
+$CallbackUrl=آدرس بازگشتی به سایت ; // set callback url
+$additionalData= رشته با طول حداکثر 500 کاراکتر حاوی داده های اضافی است   ; // set Additional Data max 500 character
+$originator=  رشته با طول حداکثر 50 کاراکتر که نمایانگر منشأ درخواست تراکنش میباشد ; // set Originator max 50 character
+$isLog = فلگ تعیین وضعیت لاگ  ; //is log request and result
+در صورتی که این فلگ مقدار true داشته باشد . اطلاعات درخواست و خروجی فرخوانی در فایل لاگ ثبت می شود
+$addressLogger= آدرس   فایل لاگ ;//is log file address request and result
+در صورتی که شما آدرس فایل لاگ را مقداردهی نکنید فایل لاگ در مسیر کد پکیج در پوشه logs قرار داده می شود 
+
+# فراخوانی تابع salePayment برای درگاه پرداخت   
+$salePaymentResult=$parsianIPG->salePayment($OrderId,$Amount,$CallbackUrl,$additionalData,$originator,$isLog,$addressLogger);
+# چک کردن نتیجه فراخوانی    
+در صورتی که خروجی در وضعیت موفق باشد تابع isReadyToRedirect  نتیجه درستی true را برمی گرداند در غیر اینصورت نتیجه false را بر می گرداند
+
+if($parsianIPG->isReadyToRedirect($salePaymentResult)){
+# انتقال به صفحه پرداخت    
+
+    $parsianIPG->redirect($salePaymentResult);// redirect to parsian bank gateway  for payment  
+}
+
+
+ 
 ```
