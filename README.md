@@ -62,7 +62,8 @@ use Mastercode724\ParsianIPG\Entities\ReversalResult;
 $parsianIPG=new ParsianIPG('scsdsdfbdsthsgfnfgndg');//set parsian pin 
 $isLog=true; //is log request and result
 $addressLogger="";//is log file address request and result
-$reversalResult = $parsianIPG->reversal(12545485,$isLog,$addressLogger);//reverse token payment
+$token=12545485;//Token of pay request 
+$reversalResult = $parsianIPG->reversal($token,$isLog,$addressLogger);//reverse token payment
 if($parsianIPG->isReadyReversal($reversalResult)){
     die(' Reverse Payment OK '); 
 }else{
