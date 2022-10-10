@@ -53,6 +53,7 @@ class ParsianIPG
      * @param $amount
      * @param string $callbackUrl
      * @param string $additionalData
+     * @param string $originator
      * @param bool $isLog
      * @param string $addressLogger
      * @return SalePaymentResult|null
