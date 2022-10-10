@@ -88,8 +88,7 @@ class SalePayment extends ParsianRequest
 
             if(($amount>=1000) && (!empty($callbackUrl))) {
 
-                $result = $this->sendPayRequest($salePaymentRequest);
-                $this->salePaymentResult = $result;
+                $this->salePaymentResult = $this->sendPayRequest($salePaymentRequest); 
                 $this->logger->writeInfo($this->salePaymentResult);
 
             }else{
