@@ -49,8 +49,7 @@ class Reverse  extends ParsianRequest
             $status = $result['ReversalRequestResult']['Status'];
         }
 
-        if($status!= '0'){
-            //throw new ParsianErrorException( $status);
+        if($status!= '0'){ 
             if(isset($result['ReversalRequestResult']['Token']))
                 $token = $result['ReversalRequestResult']['Token']  ;
             else
