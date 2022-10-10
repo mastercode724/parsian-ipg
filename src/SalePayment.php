@@ -45,7 +45,7 @@ class SalePayment extends ParsianRequest
             'OrderId' => $salePaymentRequest->getOrderId(),
             'CallBackUrl' => $salePaymentRequest->getCallbackUrl(),
             'AdditionalData'=> $salePaymentRequest->getAdditionalData(),
-            'Originator'=> $salePaymentRequest->getOriginator(),
+            'Originator'=> $salePaymentRequest->getOriginator()
         ]; 
 
         $result = $this->sendRequest($this->sale_url,'SalePaymentRequest',$parameters);
