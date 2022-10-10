@@ -88,9 +88,7 @@ class Reverse  extends ParsianRequest
                 $reversalRequest->setPin($pin);
                 $reversalRequest->setToken($token);
 
-                $this->logger->writeInfo($reversalRequest);
-                $this->reversalResult = null;
-
+                $this->logger->writeInfo($reversalRequest); 
                 $this->reversalResult = $this->reverseRequest($reversalRequest);
                 $this->logger->writeInfo($this->reversalResult);
 
